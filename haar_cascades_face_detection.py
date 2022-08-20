@@ -10,6 +10,8 @@ import os
 ap = argparse.ArgumentParser()
 ap.add_argument("-c", "--cascades", type=str, default="cascades",
                 help="path to input directory containing haar cascades")
+ap.add_argument("-r", "--picamera", type=int, default=1,
+                help="whether or not the Raspberry Pi camera should be used")
 args = vars(ap.parse_args())
 
 # initialize a dictionary that maps the name of the haar cascades to
@@ -32,8 +34,12 @@ for (name, path) in detectorPaths.items():
     detectors[name] = cv2.CascadeClassifier(path)
 
 # initialize the video stream and allow the camera sensor to warm up
-print("[INFO] starting video stream...")
-vs = VideoStream(src=0).start()
+# print("[INFO] starting video stream...")
+# vs = VideoStream(src=0).start()
+# time.sleep(2.0)
+
+print("[INFO] camera sensor warming up...")
+vs = VideoStream(usePiCamera=args["picamera"] > 0).start()
 time.sleep(2.0)
 
 # loop over the frames from the video stream
