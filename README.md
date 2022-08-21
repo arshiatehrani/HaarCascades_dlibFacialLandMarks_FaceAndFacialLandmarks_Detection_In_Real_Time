@@ -109,4 +109,4 @@ Enjoy!
 ## Original Author
 
 Adrian Rosebrock
-    Website :- [Pyimagesearch](https://pyimagesearch.com/)
+Website :- [Pyimagesearch](https://pyimagesearch.com/)
